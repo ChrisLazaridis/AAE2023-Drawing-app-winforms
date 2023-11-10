@@ -62,38 +62,7 @@ namespace AAE2023_P22083_M1
             }
             else if (choice != 0)
             {
-                button16.Enabled = true;
-                button16.Visible = true;
-                button17.Enabled = true;
-                button17.Visible = true;
-                button18.Enabled = true;
-                button18.Visible = true;
-                button19.Enabled = true;
-                button19.Visible = true;
-                button20.Enabled = true;
-                button20.Visible = true;
-                button21.Enabled = true;
-                button21.Visible = true;
-                button22.Enabled = true;
-                button22.Visible = true;
-                button1.Enabled = false;
-                button2.Enabled = false;
-                button3.Enabled = false;
-                button4.Enabled = false;
-                button5.Enabled = false;
-                button6.Enabled = false;
-                button7.Enabled = false;
-                button8.Enabled = false;
-                button9.Enabled = false;
-                button10.Enabled = false;
-                button11.Enabled = false;
-                button12.Enabled = false;
-                button13.Enabled = false;
-                button14.Enabled = false;
-                button15.Enabled = false;
-                textBox1.Enabled = false;
-                numericUpDown1.Enabled = false;
-                textBox2.Visible = true;
+                freeze_controls();
             }
 
         }
@@ -471,45 +440,8 @@ namespace AAE2023_P22083_M1
         private void button16_Click(object sender, EventArgs e)
         {
             drawn = false;
-            button16.Enabled = false;
-            button16.Visible = false;
-            button17.Enabled = false;
-            button17.Visible = false;
-            button18.Enabled = false;
-            button18.Visible = false;
-            button19.Enabled = false;
-            button19.Visible = false;
-            button20.Enabled = false;
-            button20.Visible = false;
-            button21.Enabled = false;
-            button21.Visible = false;
-            button22.Enabled = false;
-            button22.Visible = false;
-            button1.Enabled = true;
-            button2.Enabled = true;
-            button3.Enabled = true;
-            button4.Enabled = true;
-            button5.Enabled = true;
-            button6.Enabled = true;
-            button7.Enabled = true;
-            button8.Enabled = true;
-            button9.Enabled = true;
-            button10.Enabled = true;
-            button11.Enabled = true;
-            button12.Enabled = true;
-            button13.Enabled = true;
-            button14.Enabled = true;
-            button15.Enabled = true;
-            textBox1.Enabled = true;
-            numericUpDown1.Enabled = true;
-            textBox2.Visible = false;
-            choice = 0;
             g.DrawImage(bitmap2, 0, 0);
-            g2.Clear(Color.Transparent);
-            pictureBox2.Refresh();
-            pictureBox1.Refresh();
-            drawingHistory.Clear();
-            historyIndex = -1;
+            reset_controls();
         }
         private void redraw_shape(int c, Point start, Point stop)
         {
@@ -642,44 +574,56 @@ namespace AAE2023_P22083_M1
         private void button22_Click(object sender, EventArgs e)
         {
             drawn = false;
-            button16.Enabled = false;
-            button16.Visible = false;
-            button17.Enabled = false;
-            button17.Visible = false;
-            button18.Enabled = false;
-            button18.Visible = false;
-            button19.Enabled = false;
-            button19.Visible = false;
-            button20.Enabled = false;
-            button20.Visible = false;
-            button21.Enabled = false;
-            button21.Visible = false;
-            button22.Enabled = false;
-            button22.Visible = false;
-            button1.Enabled = true;
-            button2.Enabled = true;
-            button3.Enabled = true;
-            button4.Enabled = true;
-            button5.Enabled = true;
-            button6.Enabled = true;
-            button7.Enabled = true;
-            button8.Enabled = true;
-            button9.Enabled = true;
-            button10.Enabled = true;
-            button11.Enabled = true;
-            button12.Enabled = true;
-            button13.Enabled = true;
-            button14.Enabled = true;
-            button15.Enabled = true;
+            reset_controls();
+        }
+        private void DisableButtons(params Button[] buttons)
+        {
+            foreach (var button in buttons)
+            {
+                button.Enabled = false;
+                button.Visible = false;
+            }
+        }
+        private void EnableButtons(params Button[] buttons)
+        {
+            foreach (var button in buttons)
+            {
+                button.Enabled = true;
+                button.Visible = true;
+            }
+        }
+        private void reset_controls()
+        {
+            DisableButtons(button16, button17, button18, button19, button20, button21, button22);
+            EnableButtons(button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, 
+                          button12, button13, button14, button15);
+
             textBox1.Enabled = true;
+            textBox1.Visible = true;
             numericUpDown1.Enabled = true;
+            numericUpDown1.Visible = true;
+
             textBox2.Visible = false;
             choice = 0;
+
             g2.Clear(Color.Transparent);
             pictureBox2.Refresh();
             pictureBox1.Refresh();
+
             drawingHistory.Clear();
             historyIndex = -1;
+        }
+        private void freeze_controls()
+        {
+            EnableButtons(button16, button17, button18, button19, button20, button21, button22);
+            DisableButtons(button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11,
+                           button12, button13, button14, button15);
+            textBox1.Enabled = false;
+            textBox1.Visible = false;
+            numericUpDown1.Enabled = false;
+            numericUpDown1.Visible = false;
+
+            textBox2.Visible = true;
         }
     }
 
