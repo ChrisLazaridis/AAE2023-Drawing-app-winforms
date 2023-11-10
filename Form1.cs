@@ -299,7 +299,11 @@ namespace AAE2023_P22083_M1
 
                 try
                 {
-                    pictureBox1.Image = Image.FromFile(fileName);
+                    bitmap = Bitmap.FromFile(fileName) as Bitmap;
+                    g = Graphics.FromImage(bitmap);
+                    pictureBox1.Image = bitmap;
+                    pictureBox1.Refresh();
+                    MessageBox.Show("File opened successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
