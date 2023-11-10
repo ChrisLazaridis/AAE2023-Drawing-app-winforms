@@ -251,7 +251,7 @@ namespace AAE2023_P22083_M1
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.Filter = "Bitmap Image|*.bmp|JPEG Image|*.jpg|PNG Image|*.png|";
+            saveFileDialog1.Filter = "Bitmap Image|*.bmp|JPEG Image|*.jpg|PNG Image|*.png";
             ImageFormat imageFormat = ImageFormat.Bmp;
             string fileName;
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
